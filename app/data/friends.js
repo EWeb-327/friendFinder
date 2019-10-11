@@ -15,6 +15,22 @@ var friends = [
             5
         ]
 
+    },
+    {
+        name: "Elizabeth",
+        photo: "https://dglawpa.com/wp-content/uploads/DSC_8647-684x1024.jpg",
+        scores: [
+            4,
+            2,
+            5,
+            1,
+            3,
+            5,
+            5,
+            3,
+            2,
+            4
+        ]
     }
 ]
 
