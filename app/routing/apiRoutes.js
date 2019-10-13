@@ -1,4 +1,7 @@
 var friends = require("../data/friends.js")
+var matchName = ""
+var matchPhoto = ""
+
 module.exports = function(app){
 app.get("/api/friends", function(req,res){
     res.json(friends)
@@ -6,9 +9,6 @@ app.get("/api/friends", function(req,res){
 
 app.post("/api/friends", function(req, res){
     var newFriend = req.body
-    friends.push(newFriend)
-    res.json(newFriend)
-
     var newScores = req.body.scores
     var totalDif = []
 
@@ -36,8 +36,12 @@ app.post("/api/friends", function(req, res){
         }
     }
     
+    friends.push(newFriend)
+    res.json(newFriend)
+
     console.log(friends[match].name)
     console.log(friends[match].photo)
 
+    // return friends[match]
 })
 };

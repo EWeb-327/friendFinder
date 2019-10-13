@@ -33,7 +33,7 @@
 
             <h4><strong>Statement 1</strong></h4>
             <h5>I see myself as extraverted, enthusiastic.</h5>
-            <select class="chosen-select" id="q1">
+            <select class="selected" id="q1">
             <option value=""></option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
@@ -44,7 +44,7 @@
 
             <h4><strong>Statement 2</strong></h4>
             <h5>I see myself as critical, quarrelsome.</h5>
-            <select class="chosen-select" id="q2">
+            <select class="selected" id="q2">
             <option value=""></option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
@@ -55,7 +55,7 @@
 
             <h4><strong>Statement 3</strong></h4>
             <h5>I see myself as dependable, self-disciplined.</h5>
-            <select class="chosen-select" id="q3">
+            <select class="selected" id="q3">
             <option value=""></option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
@@ -66,7 +66,7 @@
 
             <h4><strong>Statement 4</strong></h4>
             <h5>I see myself as anxious, easily upset.</h5>
-            <select class="chosen-select" id="q4">
+            <select class="selected" id="q4">
             <option value=""></option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
@@ -77,7 +77,7 @@
 
             <h4><strong>Statement 5</strong></h4>
             <h5>I see myself as open to new experiences, complex.</h5>
-            <select class="chosen-select" id="q5">
+            <select class="selected" id="q5">
             <option value=""></option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
@@ -88,7 +88,7 @@
 
             <h4><strong>Statement 6</strong></h4>
             <h5>I see myself as reserved, quiet.</h5>
-            <select class="chosen-select" id="q6">
+            <select class="selected" id="q6">
             <option value=""></option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
@@ -99,7 +99,7 @@
 
             <h4><strong>Statement 7</strong></h4>
             <h5>I see myself as sympathetic, warm.</h5>
-            <select class="chosen-select" id="q7">
+            <select class="selected" id="q7">
             <option value=""></option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
@@ -110,7 +110,7 @@
 
             <h4><strong>Statement 8</strong></h4>
             <h5>I see myself as disorganized, careless.</h5>
-            <select class="chosen-select" id="q8">
+            <select class="selected" id="q8">
             <option value=""></option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
@@ -121,7 +121,7 @@
 
             <h4><strong>Statement 9</strong></h4>
             <h5>I see myself as calm, emotionally stable.</h5>
-            <select class="chosen-select" id="q9">
+            <select class="selected" id="q9">
             <option value=""></option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
@@ -132,7 +132,7 @@
 
             <h4><strong>Statement 10</strong></h4>
             <h5>I see myself as conventional, uncreative.</h5>
-            <select class="chosen-select" id="q10">
+            <select class="selected" id="q10">
             <option value=""></option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
@@ -145,9 +145,63 @@
                 <button type="submit" class="btn btn-primary btn-md" id="submit-btn"><span class="fa"></span>Submit</button>
             </div>
         </div>
-
+        <div class="match">
+            <h3>Submit your info and see your match below!</h3>
+            <h4 id="match-name"></h4>
+            <img id="match-photo" src="">
+        </div>
     </div>
 </div>
+<script>
+$("#submit-btn").on("click", function(event){
+    event.preventDefault();
+
+    function validateInputs(){
+        var isValid = true;
+        $(".form-input").each(function(){
+            if ($(this).val() === ""){
+                isValid = false
+            }
+        });
+
+        $(".selected").each(function(){
+            if ($(this).val() === ""){
+                isValid = false
+            }
+        });
+
+        return isValid
+    }
+
+    if(validateInputs()) {
+        var newFriend = {
+            name: $("#name").val(),
+            photo: $("#photo").val(),
+            scores: [
+                $("#q1").val(),
+                $("#q2").val(),
+                $("#q3").val(),
+                $("#q4").val(),
+                $("#q5").val(),
+                $("#q6").val(),
+                $("#q7").val(),
+                $("#q8").val(),
+                $("#q9").val(),
+                $("#q10").val()
+            ]
+        };
+
+        $.post("api/friends", newFriend, function(data){
+            console.log(data)
+            $("#match-name").text(data.name)
+            $("#match-photo").attr("src", data.photo)
+        });
+    } else {
+        $("#match-name").text("Please fill out all inputs on the form.")
+    }
+})
+</script>
+
 </body>
 
 </html>
