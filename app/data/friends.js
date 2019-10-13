@@ -163,3 +163,39 @@ var friends = [
 ]
 
 module.exports = friends
+var totalDif = []
+var ctr = 0
+var req = [5,4,3,2,1,5,4,3,2,1]
+           2,5,1,1,3,4,5,4,2,1
+           3,1,2,1,2,1,1,1,0,0
+
+for (var i = 0; i<friends.length; i++){
+    var dif = friends[i].scores.map(function (num, idx) {
+        return Math.abs(num - req[idx]);
+      });
+      console.log(dif)
+      var totalDifference = 0
+      for (var j = 0; j<dif.length; j++){
+        totalDifference += dif[j]
+      }
+        totalDif.push(totalDifference)
+      console.log(totalDifference)
+      console.log(totalDif)     
+}
+
+var min = totalDif[0]
+var match = 0
+
+for (var x = 0; x<totalDif.length; x++){
+    if (min > totalDif[x]){
+        min = totalDif[x];
+        match = x
+    }
+}
+
+console.log(friends[match].name)
+console.log(friends[match].photo)
+
+// // console.log(dif)
+
+// console.log(totalDif)
