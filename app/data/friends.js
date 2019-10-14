@@ -162,6 +162,7 @@ var friends = [
     }
 ]
 
+
 module.exports = friends
 // var totalDif = []
 // var ctr = 0

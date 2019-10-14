@@ -1,6 +1,5 @@
 var friends = require("../data/friends.js")
-var matchName = ""
-var matchPhoto = ""
+var match = ["filler1", "filler2"]
 
 module.exports = function(app){
 app.get("/api/friends", function(req,res){
@@ -27,21 +26,29 @@ app.post("/api/friends", function(req, res){
     }
 
     var min = totalDif[0]
-    var match = 0
+    var matchInd = 0
     
     for (var x = 0; x<totalDif.length; x++){
         if (min > totalDif[x]){
             min = totalDif[x];
-            match = x
+            matchInd = x
         }
     }
     
     friends.push(newFriend)
     res.json(newFriend)
 
-    console.log(friends[match].name)
-    console.log(friends[match].photo)
+
+    console.log(friends[matchInd].name)
+    console.log(friends[matchInd].photo)
+    match.splice(0, 2, friends[matchInd].name, friends[matchInd].photo);
+    console.log(match)
 
     // return friends[match]
+})
+
+app.get("/api/match", function(req,res){
+    res.send(match)
+    console.log(match)
 })
 };
