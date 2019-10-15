@@ -37,7 +37,7 @@ var friends = [
         photo: "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/actor-tom-holland-looks-on-during-a-practice-round-ahead-of-news-photo-1079651980-1561474294.jpg?resize=480:*",
         scores: [
             3,
-            5,
+            4,
             1,
             4,
             2,
@@ -52,7 +52,7 @@ var friends = [
         name: "Susan D.",
         photo: "https://www.sns.ias.edu/~seclark/images/susan.jpg",
         scores: [
-            1,
+            2,
             2,
             3,
             4,
@@ -68,7 +68,7 @@ var friends = [
         name: "Olivia E.",
         photo: "https://pbs.twimg.com/profile_images/1036393341787811840/e7zwilw5_400x400.jpg",
         scores: [
-            2,
+            4,
             3,
             4,
             5,
@@ -84,7 +84,7 @@ var friends = [
         name: "Ricky F.",
         photo: "https://images.spot.im/v1/production/lcjgvtr3scrrhyjpxdix",
         scores: [
-            2,
+            1,
             2,
             4,
             4,
@@ -93,14 +93,14 @@ var friends = [
             3,
             3,
             5,
-            5
+            4
         ]
     },
     {
         name: "Melissa G.",
         photo:"https://cleanmyspace.com/wp-content/uploads/2018/04/about-melissa-maker.jpg",
         scores: [
-            5,
+            2,
             4,
             3,
             2,
@@ -141,7 +141,7 @@ var friends = [
             5,
             4,
             2,
-            1
+            2
         ]
     },
     {

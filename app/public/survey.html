@@ -10,20 +10,20 @@
         href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet"
         href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     <script src="https://code.jquery.com/jquery.js"></script>
     <script
         src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
 </head>
 
 <body>
 <div class="container">
-    <h1>Survey Statements</h1>
     <div class="about-you card mb-4">
         <div class="card-header">
-            <h3>About You</h3>
+            <h1>Survey</h1>
         </div>
         <div class="card-body">
+            <h3 id="about-you">About You</h3>
             <h4>Name (Required):</h4>
             <input type="text" id="name" class="form-input">
             <h4>Photo (Please provide a link):</h4>
@@ -141,78 +141,26 @@
             <option value="5">5 (Strongly Agree)</option>
             </select>
             <br>
-            <h3>Submit your info and see your match below!</h3>
+            <h3 id="bottom-text">Submit your info and see your match below!</h3>
             <div class="text-center">
-                <button type="submit" class="btn btn-primary btn-md" id="submit-btn"><span class="fa"></span>Submit</button>
+                <button type="submit" class="btn btn-md" id="submit-btn"><span class="fa"></span>Submit</button>
             </div>
         </div>
         <div id="myModal" class="modal">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
             <div class="modal-content">
-            <h3>Your Match:</h3>
+            <h3 style="margin-right: 7%">Your Match:</h3>
+            <h4 id="your-name"></h4>
+            <img id="your-photo" src="" width="250px">
             <h4 id="match-name"></h4>
             <img id="match-photo" src="" width="250px">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+           
+            <button type="button" class="btn btn-default" data-dismiss="modal" style="margin-left: 7%">Close</button>
             </div>
         </div>
     </div>
 </div>
-<script>
-$("#submit-btn").on("click", function(event){
-    event.preventDefault();
-
-    function validateInputs(){
-        var isValid = true;
-        $(".form-input").each(function(){
-            if ($(this).val() === ""){
-                isValid = false
-            }
-        });
-
-        $(".selected").each(function(){
-            if ($(this).val() === ""){
-                isValid = false
-            }
-        });
-
-        return isValid
-    }
-
-    if(validateInputs()) {
-        var newFriend = {
-            name: $("#name").val(),
-            photo: $("#photo").val(),
-            scores: [
-                $("#q1").val(),
-                $("#q2").val(),
-                $("#q3").val(),
-                $("#q4").val(),
-                $("#q5").val(),
-                $("#q6").val(),
-                $("#q7").val(),
-                $("#q8").val(),
-                $("#q9").val(),
-                $("#q10").val()
-            ]
-        };
-
-        $.post("/api/friends", newFriend, function(data){
-            console.log(data)
-        });
-    } else {
-        $("#match-name").text("Please fill out all inputs on the form.")
-    }
-
-    $.get("/api/match", function(data){
-        console.log(data)
-        $("#match-name").text(data[0])
-        $("#match-photo").attr("src", data[1])
-
-        $("#myModal").modal("toggle");
-    })
-})
-</script>
-
+<script src="assets/javascript/survey.js"></script>
 </body>
 
 </html>

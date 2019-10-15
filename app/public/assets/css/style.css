@@ -1,0 +1,42 @@
+body {
+    background-color: #3333ff; 
+    position: relative;
+}
+.jumbotron {
+    margin-top: 50px;
+}
+.mag {
+    background: transparent;
+    width: 50px;
+    float: left;
+    margin-right: 20px;
+}
+#submit-btn {
+    background-color: #bfbfbf;
+}
+#take-survey:hover , #submit-btn:hover{
+    background-color: #0000b3;
+    color: whitesmoke;
+}
+.card-header {
+    text-align: center;
+    letter-spacing: 0.5rem;
+}
+#about-you{
+    border-bottom: solid 2px grey;
+}
+#bottom-text{
+    text-align: center;
+}
+.modal-content {
+    flex-direction: row;
+}
+footer {
+    position: absolute;
+    bottom: -600px;
+    right: 400px;
+}
+#credit {
+    font-size: 12px;
+    text-align: center;
+}
